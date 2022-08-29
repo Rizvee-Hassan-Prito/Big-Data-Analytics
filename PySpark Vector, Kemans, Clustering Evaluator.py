@@ -33,14 +33,10 @@ evaluator=ClusteringEvaluator(predictionCol='prediction',featuresCol='standardiz
 
 for i in range(2,10):
   KMeans_algo=KMeans(featuresCol='standardized',k=i)
-
   KMeans_fit=KMeans_algo.fit(data_scale_output)
-
   output=KMeans_fit.transform(data_scale_output)
   score= evaluator.evaluate(output)
-
   silhouette_score.append(score)
-
   print("Silhouette Score for k=",i,"-->",score)
 
 print(silhouette_score)
